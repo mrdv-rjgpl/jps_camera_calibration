@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(camera_calibration)
+project(jps_camera_calibration)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
 # add_definitions(-std=c++11)
@@ -106,7 +106,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES camera_calibration
+#  LIBRARIES jps_camera_calibration
 #  CATKIN_DEPENDS gazebo_plugins gazebo_ros gazebo_ros_control tf ur_description
 #  DEPENDS system_lib
 )
@@ -124,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/camera_calibration.cpp
+#   src/${PROJECT_NAME}/jps_camera_calibration.cpp
 # )
 
 ## Add cmake target dependencies of the library
