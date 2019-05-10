@@ -1,6 +1,7 @@
+<?xml version="1.0"?>
 <launch>
 
-
+<!-- <include file="$(find realsense_camera)/launch/r200_nodelet_default.launch"/> -->
     <node pkg="aruco_ros" type="single" name="aruco" ns="camera">
         <remap from="/image" to="image_raw" />
         <remap from="/camera_info" to="camera_info" />

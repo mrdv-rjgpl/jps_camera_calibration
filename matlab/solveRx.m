@@ -13,3 +13,8 @@ end
 
 [Mu, Md] = eig(M' * M);
 Rx = Mu * sqrtm(inv(Md)) * Mu' * M';
+
+end
+
+
+
