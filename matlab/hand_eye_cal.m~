@@ -39,16 +39,16 @@ rosshutdown;
 n=size(e_bh,1);
 bin=nchoosek([1:n],n-1);
 
-% for i=1:n-1
-%     X=axxb(e_bh(bin(i,:),:), e_sc(bin(i,:),:));
-%     X_translation = X(1:3,4);
-%     X_rot = X(1:3,1:3);
-%     X_temp = rotm2quat(X_rot);
-%     %X_quat = [X_temp(4), X_temp(1:3)];
-%     X_quat=[X_temp(2:4), X_temp(1)];
-%     t(i,:)=[X_translation' X_quat];
-% end
-%     
+for i=1:n-1
+    X=axxb(e_bh(bin(i,:),:), e_sc(bin(i,:),:));
+    X_translation = X(1:3,4);
+    X_rot = X(1:3,1:3);
+    X_temp = rotm2quat(X_rot);
+    %X_quat = [X_temp(4), X_temp(1:3)];
+    X_quat=[X_temp(2:4), X_temp(1)];
+    t(i,:)=[X_translation' X_quat];
+end
+    
     
     
     
@@ -56,7 +56,7 @@ X=axxb(e_bh, e_sc);
 X_translation = X(1:3,4);
 X_rot = X(1:3,1:3);
 X_temp = rotm2quat(X_rot);
-X_quat = [X_temp(4), X_temp(1:3)];
+%X_quat = [X_temp(4), X_temp(1:3)];
 X_quat=[X_temp(2:4), X_temp(1)];
 X_final = [X_translation' X_quat];
 fileID = fopen('../src/camera_pose.txt', 'w');
