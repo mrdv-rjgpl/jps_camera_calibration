@@ -29,7 +29,7 @@
 	 <param name="marker_size"        value="0.1"/>
 	 <param name="marker_id"          value="01"/>
 	 <param name="reference_frame" value="base"/>
-	 <param name="camera_frame"       value="camera_frame"/>
+	 <param name="camera_frame"       value="camera_link"/>
 	 <param name="marker_frame"       value="marker" />
 	 <param name="corner_refinement"  value="SUBPIX" />
  </node>
@@ -44,5 +44,18 @@
 		<param name="marker_frame"       value="marker" />
 		<param name="corner_refinement"  value="SUBPIX" />
 	</node> -->
+
+
+
+
+   <!--  <node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkersNoKinect" respawn="false" output="screen">
+		<param name="marker_size"           type="double" value="0.1" />
+		<param name="output_frame"          type="string" value="camera_link" />
+
+
+		<remap from="/image"  to="/usb_cam/image_raw" />
+	   <remap from="/camera_info" to="/usb_cam/camera_info" />
+	</node> -->
+
 
 </launch>
