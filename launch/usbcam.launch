@@ -32,7 +32,7 @@
         <param name="marker_size"        value="0.1"/>
         <param name="marker_id"          value="01"/>
         <param name="reference_frame" value="base"/>
-        <param name="camera_frame"       value="camera_frame"/>
+        <param name="camera_frame"       value="camera_link"/>
         <param name="marker_frame"       value="marker" />
         <param name="corner_refinement"  value="SUBPIX" />
     </node>
