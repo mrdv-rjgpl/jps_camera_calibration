@@ -12,7 +12,7 @@
   </include>
 
   <!-- send robot urdf to param server -->
-  <include file="$(find assignment2)/launch/ur5_upload.launch">
+  <include file="$(find jps_camera_calibration)/launch/ur5_upload.launch">
     <arg name="limited" value="$(arg limited)"/>
   </include>
 
@@ -43,14 +43,14 @@
   <node pkg="rqt_gui"
 	type="rqt_gui"
 	name="rqt_gui"
-	args="--perspective-file $(find assignment2)/assignment2.perspective"/>
+	args="--perspective-file $(find jps_camera_calibration)/assignment2.perspective"/>
 
   <node pkg="rviz"
 	type="rviz"
 	name="rviz"
-	args="-d $(find assignment2)/assignment2.rviz"/>
+	args="-d $(find jps_camera_calibration)/assignment2.rviz"/>
 
-  <include file="$(find assignment2)/launch/usbcam.launch"/>
+  <include file="$(find jps_camera_calibration)/launch/usbcam.launch"/>
 
 
 
