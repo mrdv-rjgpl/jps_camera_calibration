@@ -7,6 +7,7 @@ e_sc=[];
 
 fprintf('Press any key to obtain the first transformation once the marker frame is visible. DO NOT CLICK THE MOUSE!\n');
 k = waitforbuttonpress
+num_frames_acq = 0;
 
 while(k)
 	fprintf('Getting transformation from camera_link to marker...\n');
@@ -30,11 +31,13 @@ while(k)
 
 	fprintf('Computing e_bh...\n');
 	e_bh=[e_bh;[t_fk r_fk]];
+	num_frames_acq = num_frames_acq + 1
 	fprintf('Obtained transformation. Press any key to obtain the next transformation. Click the mouse to begin the hand-eye calibration computations.\n');
 	k = waitforbuttonpress
 end
 
 fprintf('All required transformations acquired. Computing hand-eye calibration...\n');
+close all;
 rosshutdown;
 n=size(e_bh,1);
 bin=nchoosek([1:n],n-1);
@@ -48,10 +51,8 @@ bin=nchoosek([1:n],n-1);
 %     X_quat=[X_temp(2:4), X_temp(1)];
 %     t(i,:)=[X_translation' X_quat];
 % end
-%     
-    
-    
-    
+%
+
 X=axxb(e_bh, e_sc);
 X_translation = X(1:3,4);
 X_rot = X(1:3,1:3);
@@ -59,18 +60,19 @@ X_temp = rotm2quat(X_rot);
 X_quat = [X_temp(4), X_temp(1:3)];
 X_quat=[X_temp(2:4), X_temp(1)];
 X_final = [X_translation' X_quat];
-fileID = fopen('../src/camera_pose.txt', 'w');
-fprintf(fileID, '[ ');
+fileID = fopen('../dat/camera_pose.txt', 'w');
 
 for i = 1 : 7
 	fprintf(fileID, '%f', X_final(i));
 
 	if (i ~= 7)
-		fprintf(fileID, ', ');
+		fprintf(fileID, ' ');
 	else
-		fprintf(fileID, ']\n');
+		fprintf(fileID, '\n');
 	end
 end
+
+save('../dat/hand_eye_cal.mat');
 
 fclose(fileID);
 
